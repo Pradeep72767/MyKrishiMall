@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,17 +12,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mykrishimall.Model.Users;
+import com.example.mykrishimall.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mobileInput, passwordInput;
     private Button loginButton;
     private ProgressDialog loadingBar;
+
+    private String parentDbName = "Users";
+    private CheckBox chkBoxRememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.login_password_input);
         loginButton = findViewById(R.id.login_btn);
         loadingBar = new ProgressDialog(this);
+        chkBoxRememberMe = findViewById(R.id.remeber_me_chkbox);
+        Paper.init(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,16 +78,44 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void AllowAccessAccount(String phone, String password)
+    private void AllowAccessAccount(final String phone, final String password)
     {
+        if (chkBoxRememberMe.isChecked())
+        {
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+        }
+
         final DatabaseReference Rootref;
         Rootref = FirebaseDatabase.getInstance().getReference();
 
         Rootref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
+            public void onDataChange(@NonNull DataSnapshot datasnapshot)
             {
 
+                if (datasnapshot.child(parentDbName).child(phone).exists())
+                {
+
+                    Users usersData = datasnapshot.child(parentDbName).child(phone).getValue(Users.class);
+
+                    if (usersData.getPhone().equals(phone))
+                    {
+                        if (usersData.getPassword().equals(password))
+
+                            Toast.makeText(LoginActivity.this,"Logged In", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        }
+                    }
+
+                else
+                    {
+                    Toast.makeText(LoginActivity.this,"Please! Create Account", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
+                }
             }
 
             @Override
