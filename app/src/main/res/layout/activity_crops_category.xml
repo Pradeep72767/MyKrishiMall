@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CropsCategoryActivity">
+
+    <TextView
+        android:id="@+id/slogan_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Add Crops"
+        android:textSize="35dp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:id="@+id/linear_category_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:gravity="left"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/slogan_category"
+
+
+
+
+        >
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/vegetables_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:src="@drawable/veg_icon"></com.rey.material.widget.ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_category_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linear_category_layout1"
+
+
+
+
+        >
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/grains_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:src="@drawable/grains_icon"
+            android:layout_gravity="left"
+            ></com.rey.material.widget.ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_category_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linear_category_layout2"
+
+
+
+
+        >
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/fruit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:src="@drawable/fruits_icon"
+            android:layout_gravity="left"
+            ></com.rey.material.widget.ImageView>
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

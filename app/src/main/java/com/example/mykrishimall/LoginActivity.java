@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mykrishimall.Model.Users;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mobileInput, passwordInput;
     private Button loginButton;
     private ProgressDialog loadingBar;
+    private TextView FarmerLink, notFarmerLink;
 
     private String parentDbName = "Users";
     private CheckBox chkBoxRememberMe;
@@ -42,12 +44,34 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_btn);
         loadingBar = new ProgressDialog(this);
         chkBoxRememberMe = findViewById(R.id.remeber_me_chkbox);
+        FarmerLink = findViewById(R.id.farmer_panel_link);
+        notFarmerLink = findViewById(R.id.not_farmer_panel_link);
         Paper.init(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LoginUser();
+            }
+        });
+
+        FarmerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginButton.setText("Login Farmer");
+                FarmerLink.setVisibility(View.INVISIBLE);
+                notFarmerLink.setVisibility(View.VISIBLE);
+                parentDbName = "Farmers";
+            }
+        });
+
+        notFarmerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginButton.setText("Login");
+                notFarmerLink.setVisibility(View.INVISIBLE);
+                FarmerLink.setVisibility(View.VISIBLE);
+                parentDbName = "Users";
             }
         });
 
@@ -101,13 +125,26 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (usersData.getPhone().equals(phone))
                     {
-                        if (usersData.getPassword().equals(password))
+                        if (usersData.getPassword().equals(password)) {
 
-                            Toast.makeText(LoginActivity.this,"Logged In", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
 
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
+                            if (parentDbName.equals("Farmers"))
+                            {
+                                Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent = new Intent(LoginActivity.this, FarmersAddCropsActivity.class);
+                                startActivity(intent);
+                            }
+                            else if (parentDbName.equals("Users"))
+                            {
+                                Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            }
+                        }
                         }
                     }
 
