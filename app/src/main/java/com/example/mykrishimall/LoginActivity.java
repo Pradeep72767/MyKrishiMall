@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(LoginActivity.this, FarmersAddCropsActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, CropsCategoryActivity.class);
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("Users"))
