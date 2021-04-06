@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.mykrishimall.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.mykrishimall.ui.Cart.cartFragment"
+        android:label="@string/menu_cart"
+        tools:layout="@layout/cart_fragment" />
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="com.example.mykrishimall.ui.Order.orderFragment"
+        android:label="@string/menu_order"
+        tools:layout="@layout/order_fragment" />
+    <fragment
+        android:id="@+id/nav_category"
+        android:name="com.example.mykrishimall.ui.Category.categoryFragment"
+        android:label="@string/menu_category"
+        tools:layout="@layout/category_fragment" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.mykrishimall.ui.Setting.settingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/setting_fragment" />
+</navigation>
