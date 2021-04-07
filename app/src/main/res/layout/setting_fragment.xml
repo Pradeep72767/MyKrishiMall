@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,18 +7,106 @@
     android:layout_height="match_parent"
     tools:context=".ui.Setting.settingFragment" >
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_setting"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/close_setting_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Close"
+                    android:textColor="@android:color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+
+                    android:layout_alignParentLeft="true"
+
+                    />
+
+                <TextView
+                    android:id="@+id/update_setting_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update"
+                    android:textColor="@android:color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="25dp"
+                    android:layout_alignParentRight="true"
+
+                    />
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/setting_profile_image"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/profile"
+        android:layout_below="@id/app_bar_setting"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        />
+
     <TextView
-        android:id="@+id/text_setting"
+        android:id="@+id/profile_image_change_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Change Profile"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@id/setting_profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        />
+    <EditText
+        android:id="@+id/setting_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center_horizontal" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@id/profile_image_change_btn"
+        android:hint="Phone number..."
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:id="@+id/setting_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_phone_number"
+        android:hint="Full name..."
+        android:layout_margin="15dp"
+        android:padding="10dp"
+
+        />
+    <EditText
+        android:id="@+id/setting_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_full_name"
+        android:hint="Address..."
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        />
+
+
+</RelativeLayout>

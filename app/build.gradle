@@ -47,6 +47,14 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:2.3.0"
     implementation "androidx.navigation:navigation-ui:2.3.0"
 
+    //firebase ui database dependency
+    implementation 'com.firebaseui:firebase-ui-database:6.2.0'
+
+    //piccasso library for imagaes
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
