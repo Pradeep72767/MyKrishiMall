@@ -29,6 +29,21 @@
             />
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/msg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:text="Congratulations! you have ordered, now you have to wait 24 hours for next order"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:visibility="gone"
+        />
     
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_list"

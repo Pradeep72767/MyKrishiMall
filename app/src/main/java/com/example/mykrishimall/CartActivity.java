@@ -23,8 +23,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -33,7 +36,9 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button nextProcessBtn;
-    private TextView txtTotalAmount;
+    private TextView txtTotalAmount, txtMsg1;
+
+    private int overTotalPrice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,20 @@ public class CartActivity extends AppCompatActivity {
 
         nextProcessBtn = findViewById(R.id.next_process_btn);
         txtTotalAmount = findViewById(R.id.total_price);
+        txtMsg1 = findViewById(R.id.msg1);
+
+        nextProcessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                txtTotalAmount.setText("Total Price : " + String.valueOf(overTotalPrice));
+
+                Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
+                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -54,6 +73,8 @@ public class CartActivity extends AppCompatActivity {
     protected void onStart()
     {
         super.onStart();
+
+        CheckOrderState();
 
         final DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
@@ -71,6 +92,9 @@ public class CartActivity extends AppCompatActivity {
                 holder.txtProductPrice.setText("Price : "+ model.getPrice());
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductQuantity.setText(model.getQuantity());
+
+                int totalPriceOfTotalPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
+                overTotalPrice = overTotalPrice + totalPriceOfTotalPrice;
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -137,5 +161,47 @@ public class CartActivity extends AppCompatActivity {
         adapter.startListening();
 
 
+    }
+
+    private void CheckOrderState()
+    {
+        DatabaseReference orderRef;
+        orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
+
+        orderRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if (snapshot.exists())
+                {
+                    String shippingState = snapshot.child("State").getValue().toString();
+                    String userName = snapshot.child("name").getValue().toString();
+
+                    if (shippingState.equals("shipped"))
+                    {
+                        txtTotalAmount.setText("Order shipped successfully");
+                        recyclerView.setVisibility(View.GONE);
+
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        nextProcessBtn.setVisibility(View.GONE);
+                    }
+                    else if (shippingState.equals("not shipped"))
+                    {
+                        txtTotalAmount.setText("Shipping State = Not Shipped");
+                        recyclerView.setVisibility(View.GONE);
+
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        nextProcessBtn.setVisibility(View.GONE);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
