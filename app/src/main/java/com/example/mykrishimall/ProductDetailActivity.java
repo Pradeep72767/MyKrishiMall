@@ -65,7 +65,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View view)
             {
 
-                if (state.equals("Order Placed") || state.equals("shipped"))
+                if (state.equals("Order Placed") || state.equals("Order shipped"))
                 {
                     Toast.makeText(ProductDetailActivity.this,"you van purchase more product, once farmer confirmed your previous order", Toast.LENGTH_LONG).show();
                 }
@@ -188,7 +188,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     {
                         state = "Order shipped";
                     }
-                    else if (shippingState.equals("not shipped"))
+                    else if (shippingState.equals("Not shipped"))
                     {
                         state = "Order Placed";
                     }

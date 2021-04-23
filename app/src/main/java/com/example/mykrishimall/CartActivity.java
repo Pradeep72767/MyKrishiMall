@@ -185,7 +185,7 @@ public class CartActivity extends AppCompatActivity {
                         txtMsg1.setVisibility(View.VISIBLE);
                         nextProcessBtn.setVisibility(View.GONE);
                     }
-                    else if (shippingState.equals("not shipped"))
+                    else if (shippingState.equals("Not shipped"))
                     {
                         txtTotalAmount.setText("Shipping State = Not Shipped");
                         recyclerView.setVisibility(View.GONE);
