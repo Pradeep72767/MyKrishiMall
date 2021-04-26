@@ -42,6 +42,7 @@ import io.paperdb.Paper;
 public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private String type = " ";
 
     private DatabaseReference ProductRef;
 //    private RecyclerView recyclerView;
@@ -53,6 +54,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         ProductRef = FirebaseDatabase.getInstance().getReference().child("Crops");
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null)
+        {
+            type = getIntent().getExtras().get("Farmer").toString();
+
+        }
 
         Paper.init(this);
 
@@ -90,8 +99,11 @@ public class HomeActivity extends AppCompatActivity {
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.profile_image);
 
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        if (!type.equals("Farmer"))
+        {
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
 
 //        recyclerView = findViewById(R.id.recycler_menu);
 //        recyclerView.setHasFixedSize(true);

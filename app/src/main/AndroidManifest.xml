@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchCropsActivity"></activity>
+        <activity android:name=".AdminMaintainProductActivity"></activity>
         <activity android:name=".FarmerUserProductsActivity" />
         <activity android:name=".FarmerNewOrdersActivity" />
         <activity android:name=".ConfirmFinalOrderActivity" />

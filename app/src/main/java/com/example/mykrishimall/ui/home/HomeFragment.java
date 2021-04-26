@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mykrishimall.AdminMaintainProductActivity;
 import com.example.mykrishimall.Model.Products;
 import com.example.mykrishimall.ProductDetailActivity;
 import com.example.mykrishimall.R;
@@ -32,10 +33,21 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+    private String type = " ";
+
     public View onCreateView(@NonNull final LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null)
+        {
+            type = getActivity().getIntent().getExtras().get("Farmer").toString();
+
+        }
 
         ProductRef = FirebaseDatabase.getInstance().getReference().child("Crops");
 
@@ -65,9 +77,19 @@ public class HomeFragment extends Fragment {
                             @Override
                             public void onClick(View view)
                             {
-                                Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
-                                intent.putExtra("pid", model.getPid());
-                                startActivity(intent);
+                                if (type.equals("Farmer"))
+                                {
+                                    Intent intent = new Intent(getActivity(), AdminMaintainProductActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
+
                             }
                         });
                     }
