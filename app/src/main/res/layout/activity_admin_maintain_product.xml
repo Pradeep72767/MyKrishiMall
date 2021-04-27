@@ -10,6 +10,7 @@
     android:layout_marginStart="15dp"
     android:layout_marginLeft="15dp"
     android:layout_marginEnd="15dp"
+    android:layout_marginBottom="10dp"
     app:cardElevation="15dp"
     >
 
@@ -73,8 +74,11 @@
             />
 
 
+
+
+
         <Button
-            android:id="@+id/maintain_product_Btn"
+            android:id="@+id/maintain_product_Btn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Apply Changes"
@@ -84,6 +88,23 @@
             android:textSize="18sp"
             android:padding="12dp"
             android:layout_margin="5dp"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/maintain_delete_product_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Product"
+            android:layout_below="@+id/maintain_product_Btn2"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginTop="220dp"
+
+            android:layout_alignParentBottom="true"
             android:textColor="@android:color/white"
             android:textAllCaps="false"
             />
