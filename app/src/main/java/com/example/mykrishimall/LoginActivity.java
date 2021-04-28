@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mobileInput, passwordInput;
     private Button loginButton;
     private ProgressDialog loadingBar;
-    private TextView FarmerLink, notFarmerLink;
+    private TextView FarmerLink, notFarmerLink, forgetPasswordLink;
 
     private String parentDbName = "Users";
     private CheckBox chkBoxRememberMe;
@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
         chkBoxRememberMe = findViewById(R.id.remeber_me_chkbox);
         FarmerLink = findViewById(R.id.farmer_panel_link);
+        forgetPasswordLink = findViewById(R.id.forget_password_link);
         notFarmerLink = findViewById(R.id.not_farmer_panel_link);
         Paper.init(this);
 
@@ -52,6 +53,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoginUser();
+            }
+        });
+
+        forgetPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(LoginActivity.this, ResetPassswordActivity.class);
+                intent.putExtra("check", "login");
+                startActivity(intent);
+
             }
         });
 

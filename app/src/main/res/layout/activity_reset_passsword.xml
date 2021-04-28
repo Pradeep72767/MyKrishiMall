@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResetPassswordActivity">
+
+    
+    <RelativeLayout
+        android:id="@+id/reset_password_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/Reset_password_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset Password "
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+
+            />
+
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/find_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:padding="14dp"
+        android:layout_below="@id/reset_password_relativelayout"
+        android:layout_margin="15dp"
+        android:hint="Please! Enter your phone number"
+
+        />
+
+
+
+    <TextView
+        android:id="@+id/security_txtView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Answer the following Security Question"
+        android:textSize="26dp"
+        android:layout_below="@+id/find_phone_number"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        />
+
+    <EditText
+        android:id="@+id/security_Question_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:padding="14dp"
+        android:layout_below="@id/security_txtView"
+        android:layout_margin="15dp"
+        android:hint=" What's Your favourite ANIME"
+
+        />
+
+    <EditText
+        android:id="@+id/security_Question_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:padding="14dp"
+        android:layout_below="@id/security_Question_1"
+        android:layout_margin="15dp"
+        android:hint="What is the name of your favourite teacher.   "
+
+        />
+
+    <Button
+        android:id="@+id/verify_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:padding="14dp"
+
+        android:layout_below="@id/security_Question_2"
+        android:layout_margin="15dp"
+        android:text="Verify"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:textAllCaps="false"
+
+        />
+
+</RelativeLayout>

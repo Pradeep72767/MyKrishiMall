@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import com.example.mykrishimall.HomeActivity;
 import com.example.mykrishimall.MainActivity;
 import com.example.mykrishimall.Prevalent.Prevalent;
 import com.example.mykrishimall.R;
+import com.example.mykrishimall.ResetPassswordActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,6 +59,7 @@ public class settingFragment extends Fragment {
     private CircleImageView profileImageView;
     private EditText userPhoneEditText, userFullNameEditText, userAddressEditText;
     private TextView profileChangeBtn, closeTextBtn, updateTextBtn;
+    private Button setSecurityBtn;
 
     private Uri imageUri;
     private String myUrl;
@@ -82,6 +85,7 @@ public class settingFragment extends Fragment {
         profileChangeBtn = root.findViewById(R.id.profile_image_change_btn);
         closeTextBtn = root.findViewById(R.id.close_setting_btn);
         updateTextBtn = root.findViewById(R.id.update_setting_btn);
+        setSecurityBtn = root.findViewById(R.id.set_security_btn);
         progressBar = root.findViewById(R.id.profile_image_change_progress);
 
 //        userInfoDisplay(profileImageView, userFullNameEditText, userPhoneEditText, userAddressEditText);
@@ -118,6 +122,15 @@ public class settingFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 getActivity().startActivityForResult(intent, 1);
                 Toast.makeText(getContext(), "Inside button", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        setSecurityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ResetPassswordActivity.class);
+                intent.putExtra("check", "settings");
+                startActivity(intent);
             }
         });
 
