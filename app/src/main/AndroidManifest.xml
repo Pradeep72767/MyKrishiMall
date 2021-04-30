@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResetPassswordActivity"></activity>
+        <activity
+            android:name=".SellerHomeActivity"
+            android:label="@string/title_activity_seller_home"></activity>
+        <activity android:name=".seellerFarmerLoginActivity" />
+        <activity android:name=".sellerFarmerRegisterActivity" />
+        <activity android:name=".ResetPassswordActivity" />
         <activity android:name=".AdminMaintainProductActivity" />
         <activity android:name=".FarmerUserProductsActivity" />
         <activity android:name=".FarmerNewOrdersActivity" />

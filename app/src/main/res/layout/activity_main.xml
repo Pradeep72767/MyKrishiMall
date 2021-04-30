@@ -20,9 +20,7 @@
         android:id="@+id/main_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-
-        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/seller_begin"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -48,6 +46,22 @@
         android:text="Join Now"
         android:textColor="@android:color/white"
         android:layout_above="@+id/main_login_btn"
+        />
+    
+    
+    <TextView
+        android:id="@+id/seller_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I want to be a seller"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:textSize="23dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="10dp"
+
         />
 
 
