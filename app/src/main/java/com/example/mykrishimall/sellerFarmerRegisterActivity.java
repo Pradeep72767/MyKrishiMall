@@ -93,7 +93,7 @@ public class sellerFarmerRegisterActivity extends AppCompatActivity {
                                 final DatabaseReference rootRef;
                                 rootRef = FirebaseDatabase.getInstance().getReference();
 
-                                String sid = mAuth.getCurrentUser().getUid();
+                                String sid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                 HashMap<String, Object> sellerMap = new HashMap<>();
                                 sellerMap.put("sid", sid);
@@ -111,6 +111,11 @@ public class sellerFarmerRegisterActivity extends AppCompatActivity {
                                             {
                                                 loadingBar.dismiss();
                                                 Toast.makeText(sellerFarmerRegisterActivity.this, "Seller registered seccussfully", Toast.LENGTH_SHORT).show();
+
+                                                Intent intent = new Intent(sellerFarmerRegisterActivity.this, SellerHomeActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK  | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         });
                             }

@@ -21,8 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,7 +46,10 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
     private String productRandomKey, downloadImageUrl;
     private StorageReference CropsImagesRef;
     private DatabaseReference productRef;
+    private DatabaseReference sellerRef;
     private ProgressDialog loadingBar;
+
+    private String sName, sAddress, sPhone, sEmail;
 
 
     @Override
@@ -54,6 +61,7 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
 
         CropsImagesRef = FirebaseStorage.getInstance().getReference().child("Crops Images");
         productRef = FirebaseDatabase.getInstance().getReference().child("Crops");
+        sellerRef = FirebaseDatabase.getInstance().getReference().child("Seller Farmers");
 
         AddNewCropsBtn = findViewById(R.id.add_new_crop_btn);
         InputCropName = findViewById(R.id.product_name);
@@ -77,6 +85,27 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
 
             }
         });
+
+        sellerRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        if (snapshot.exists())
+                        {
+                            sName = snapshot.child("name").getValue().toString();
+                            sPhone = snapshot.child("phone").getValue().toString();
+                            sEmail = snapshot.child("email").getValue().toString();
+                            sAddress = snapshot.child("address").getValue().toString();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+                });
     }
 
 
@@ -209,6 +238,13 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
         productMap.put("price", Price);
         productMap.put("name", Pname);
 
+//        System.out.println(sName+" "+sAddress+" "+sPhone+" "+sEmail);
+
+        productMap.put("sellerName", sName);
+        productMap.put("sellerAddress", sAddress);
+        productMap.put("sellerPhone", sPhone);
+        productMap.put("sellerEmail", sEmail);
+
         productRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -219,7 +255,7 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
                             Intent intent = new Intent(FarmersAddCropsActivity.this, CropsCategoryActivity.class);
                             startActivity(intent);
 
-                            loadingBar.dismiss();
+                              loadingBar.dismiss();
                             Toast.makeText(FarmersAddCropsActivity.this, "product is added successfully...", Toast.LENGTH_SHORT).show();
                         }
                         else
@@ -230,5 +266,10 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void sellerInformation()
+    {
+
     }
 }
