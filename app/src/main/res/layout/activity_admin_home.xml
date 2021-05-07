@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminHomeActivity">
+
+    <TextView
+        android:id="@+id/admin_page_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welome Admin"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <com.rey.material.widget.Button
+        android:id="@+id/maintain_product_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text = "Maintain Products"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_below="@+id/admin_page_text"
+
+        />
+
+
+    <com.rey.material.widget.Button
+        android:id="@+id/farmer_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:text="Logout"
+        android:textSize="20dp"
+
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+
+
+        />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/cehck_order_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Check New Orders"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_below="@id/maintain_product_btn"
+        />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/cehck_new_product_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Check New Products
+"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_below="@id/cehck_order_btn"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>

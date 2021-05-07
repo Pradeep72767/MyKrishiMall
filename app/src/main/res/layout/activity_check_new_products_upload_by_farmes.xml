@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckNewProductsUploadByFarmesActivity">
+
+    <RelativeLayout
+        android:id="@+id/new_product_rLayout    "
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true"
+
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Products"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal" />
+
+
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/admin_new_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/new_product_rLayout">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+</RelativeLayout>

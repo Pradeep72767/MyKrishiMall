@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SellerHomeActivity"></activity>
+        <activity android:name=".CheckNewProductsUploadByFarmesActivity"></activity>
+        <activity android:name=".AdminHomeActivity" />
+        <activity android:name=".SellerHomeActivity" />
         <activity android:name=".seellerFarmerLoginActivity" />
         <activity android:name=".sellerFarmerRegisterActivity" />
         <activity android:name=".ResetPassswordActivity" />

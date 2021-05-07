@@ -15,7 +15,6 @@ public class CropsCategoryActivity extends AppCompatActivity {
     private ImageView grain;
     private ImageView fruit;
 
-    private Button checkOrderBtn, farmerLogoutBtn, maintainProductBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,41 +24,10 @@ public class CropsCategoryActivity extends AppCompatActivity {
         vegetable = findViewById(R.id.vegetables_icon);
         grain = findViewById(R.id.grains_icon);
         fruit = findViewById(R.id.fruit_icon);
-        checkOrderBtn = findViewById(R.id.cehck_order_btn);
-        farmerLogoutBtn = findViewById(R.id.farmer_logout_btn);
-        maintainProductBtn = findViewById(R.id.maintain_product_btn);
 
 
-        maintainProductBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(CropsCategoryActivity.this, HomeActivity.class);
-                intent.putExtra("Farmer","Farmer");
-                startActivity(intent);
-
-            }
-        });
 
 
-        farmerLogoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CropsCategoryActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        checkOrderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(CropsCategoryActivity.this, FarmerNewOrdersActivity.class);
-                startActivity(intent);
-            }
-        });
 
         vegetable.setOnClickListener(new View.OnClickListener() {
             @Override
