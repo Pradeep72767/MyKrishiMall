@@ -8,7 +8,7 @@
     tools:context=".CheckNewProductsUploadByFarmesActivity">
 
     <RelativeLayout
-        android:id="@+id/new_product_rLayout    "
+        android:id="@+id/new_product_rLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark"
@@ -32,7 +32,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/admin_new_product_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
         android:layout_below="@+id/new_product_rLayout">
 
     </androidx.recyclerview.widget.RecyclerView>
