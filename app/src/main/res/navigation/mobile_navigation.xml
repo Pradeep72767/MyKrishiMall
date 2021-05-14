@@ -6,6 +6,11 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
+        android:id="@+id/nav_Logout"
+        android:name="com.example.mykrishimall.ui.Cart.cartFragment"
+        android:label="Logout"
+        tools:layout="@layout/_fragment" />
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.example.mykrishimall.ui.home.HomeFragment"
         android:label="@string/menu_home"

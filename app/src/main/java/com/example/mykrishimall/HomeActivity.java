@@ -95,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (!type.equals("Farmer")) {
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_home, R.id.nav_cart, R.id.nav_category, R.id.nav_settings, R.id.nav_order)
+                    R.id.nav_home, R.id.nav_cart, R.id.nav_category, R.id.nav_settings, R.id.nav_order, R.id.nav_Logout)
                     .setDrawerLayout(drawer)
                     .build();
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

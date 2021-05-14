@@ -49,7 +49,7 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
     private DatabaseReference sellerRef;
     private ProgressDialog loadingBar;
 
-    private String sName, sAddress, sPhone, sEmail;
+    private String sName, sAddress, sPhone, sEmail, sellerId;
 
 
     @Override
@@ -97,6 +97,7 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
                             sPhone = snapshot.child("phone").getValue().toString();
                             sEmail = snapshot.child("email").getValue().toString();
                             sAddress = snapshot.child("address").getValue().toString();
+                            sellerId = snapshot.child("sid").getValue().toString();
                         }
                     }
 
@@ -244,6 +245,7 @@ public class FarmersAddCropsActivity extends AppCompatActivity {
         productMap.put("sellerAddress", sAddress);
         productMap.put("sellerPhone", sPhone);
         productMap.put("sellerEmail", sEmail);
+        productMap.put("sellerID",sellerId);
 
         productRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
