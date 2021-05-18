@@ -25,5 +25,12 @@
     <string name="linktoSite">
         <a href="https://pmksy.gov.in/">Prime Minister Krishi Sinchayee Yojana</a>
     </string>
+    <string name="linktoSite2">
+        <a href="https://pib.gov.in/Pressreleaseshare.aspx?PRID=1614115">राष्ट्रीय कृषि बाजार</a>
+    </string>
+
+    <string name="linktoSite3">
+        <a href="https://dmsouthwest.delhi.gov.in/hi/scheme/%E0%A4%88-%E0%A4%A8%E0%A5%87%E0%A4%B6%E0%A4%A8%E0%A4%B2-%E0%A4%8F%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%9A%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%95/">ई-नेशनल एग्रीकल्चर मार्केट (E-NAM)</a>
+    </string>
 
 </resources>
