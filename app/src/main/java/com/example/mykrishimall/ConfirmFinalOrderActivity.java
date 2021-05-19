@@ -100,7 +100,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                 .child(Prevalent.currentOnlineUser.getPhone());
 
         final HashMap<String, Object> orderMap = new HashMap<>();
-        orderMap.put("Total Amount",totalAmount);
+        orderMap.put("totalAmount",totalAmount);
         orderMap.put("name",nameEditText.getText().toString());
         orderMap.put("phone", phoneEditText.getText().toString());
         orderMap.put("Address", addressEditText.getText().toString());

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.customtabs.IPostMessageService;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,9 @@ public class FarmerNewOrdersActivity extends AppCompatActivity {
                         holder.userPhoneNumber.setText("Phone: "+ model.getPhone());
                         holder.userDateTime.setText("ordered at: " + model.getDate() + " " + model.getTime());
                         holder.userTotalPrice.setText("Total Price: " + model.getTotalAmount());
+
+
+                        System.out.println(model.getName()+"\n\n"+model.getTotalAmount());
 
                         holder.showOrdersBtn.setOnClickListener(new View.OnClickListener() {
                             @Override

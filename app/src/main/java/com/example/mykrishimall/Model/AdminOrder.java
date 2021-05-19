@@ -12,10 +12,10 @@ public class AdminOrder
     public AdminOrder(String name, String phone, String address, String city, String date, String time, String totalAmount) {
         this.name = name;
         this.phone = phone;
-        Address = address;
-        City = city;
-        Date = date;
-        Time = time;
+        this.Address = address;
+        this.City = city;
+        this.Date = date;
+        this.Time = time;
         this.totalAmount = totalAmount;
     }
 

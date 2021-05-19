@@ -38,7 +38,8 @@ public class CartActivity extends AppCompatActivity {
     private Button nextProcessBtn;
     private TextView txtTotalAmount, txtMsg1;
 
-    private int overTotalPrice = 0;
+    private int TotalPrice = 0;
+    private String overTotalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,12 +90,21 @@ public class CartActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model)
             {
-                holder.txtProductPrice.setText("Price : "+ model.getPrice());
+
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductQuantity.setText(model.getQuantity());
+                int price = Integer.parseInt(model.getPrice());
+                int quantity = Integer.parseInt(model.getQuantity());
 
-                int totalPriceOfTotalPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
-                overTotalPrice = overTotalPrice + totalPriceOfTotalPrice;
+                //System.out.println(price + "+++++++/n" + quantity);
+
+                int totalPriceOfTotalPrice = price*quantity;
+
+               // System.out.println(totalPriceOfTotalPrice + "++++++++");
+
+                TotalPrice = TotalPrice + totalPriceOfTotalPrice;
+                overTotalPrice = String.valueOf(TotalPrice);
+                holder.txtProductPrice.setText("Price : "+ TotalPrice);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

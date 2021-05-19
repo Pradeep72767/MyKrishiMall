@@ -28,8 +28,8 @@
         android:layout_marginTop="50dp"
         android:hint="Username..."
         android:inputType="text"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="17sp"
         android:textStyle="bold"
         />
@@ -46,8 +46,8 @@
         android:layout_marginTop="25dp"
         android:hint="Mobile number..."
         android:inputType="number"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="17sp"
         android:textStyle="bold"
         />
@@ -64,8 +64,8 @@
         android:layout_marginTop="25dp"
         android:hint="Password"
         android:inputType="numberPassword"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="17sp"
         android:textStyle="bold"
         />

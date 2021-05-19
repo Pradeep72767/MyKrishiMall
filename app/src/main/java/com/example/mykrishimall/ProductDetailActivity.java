@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,9 +39,11 @@ public class ProductDetailActivity extends AppCompatActivity {
    // private FloatingActionButton addTOCartBtn;
     private ImageView productImage;
     private Button addToCartButton;
-    private ElegantNumberButton numberButton;
+    //private ElegantNumberButton numberButton;
     private TextView productPrice, productName, productDescription;
     private String productID = "", state = "Normal";
+    private EditText usersRequirement;
+    String price, name, description, quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         productName = findViewById(R.id.product_name_detail);
         productPrice = findViewById(R.id.product_price_detail);
         productDescription = findViewById(R.id.product_description_detail);
-        numberButton = findViewById(R.id.number_btn);
-
+       // numberButton = findViewById(R.id.number_btn);
+        usersRequirement = findViewById(R.id.user_quantity_requirement);
 
         getProductDetails(productID);
 
@@ -67,7 +70,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                 if (state.equals("Order Placed") || state.equals("Order shipped"))
                 {
-                    Toast.makeText(ProductDetailActivity.this,"you van purchase more product, once farmer confirmed your previous order", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductDetailActivity.this,"you can purchase more product, once farmer confirmed your previous order", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -101,11 +104,13 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         final HashMap<String, Object> cartMap =  new HashMap<>();
         cartMap.put("pid", productID);
-        cartMap.put("pname", productName.getText().toString());
-        cartMap.put("price", productPrice.getText().toString());
+        cartMap.put("pname", name);
+        cartMap.put("price", price);
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time", saveCurrentTime);
-        cartMap.put("quantity", numberButton.getNumber());
+        cartMap.put("quantity", usersRequirement.getText().toString());
+
+        System.out.println(""+productID+" ,,,,,,,,,\n"+name+" ,,,,,,,,,,,\n"+price+" ,,,,,,,,,,,,\n"+saveCurrentDate+" ,,,,,,,,,\n"+saveCurrentTime+",,,,,,,,,,,,\n "+quantity);
 
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone()).child("Crops")
                 .child(productID)
@@ -159,6 +164,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                     productDescription.setText(products.getDescription());
                     productPrice.setText(products.getPrice());
                     Picasso.get().load(products.getImage()).into(productImage);
+                    price = products.getPrice();
+                    name = products.getName();
+                    description = products.getDescription();
                 }
             }
 
